@@ -11,20 +11,20 @@ from plotly.graph_objs import *
 ####### Set up your app #####
 app = dash.Dash(__name__)
 server = app.server
-app.title='Titanic!'
+app.title='Cereal!'
 app.css.append_css({"external_url": "https://codepen.io/chriddyp/pen/bWLwgP.css"})
 
 ###### Import a dataframe #######
-df = pd.read_csv("https://raw.githubusercontent.com/austinlasseter/plotly_dash_tutorial/master/00%20resources/titanic.csv")
+df = pd.read_csv("https://raw.githubusercontent.com/MelK44/basic-dash-pandas/master/all_cereals.csv")
 
-colors_list=['Age', 'Fare', 'Survived', 'Pclass']
+colors_list=['calories', 'protein', 'fat', 'fiber','sugars','sodium','vitamins','cups']
 
 
 
 
 ####### Layout of the app ########
 app.layout = html.Div([
-    html.H3('Choose a color from the list:'),
+    html.H3('Choose a Nutrient:'),
     dcc.Dropdown(
         id='dropdown',
         options=[{'label': i, 'value': i} for i in colors_list],
@@ -39,10 +39,10 @@ app.layout = html.Div([
 @app.callback(dash.dependencies.Output('display-value', 'figure'),
               [dash.dependencies.Input('dropdown', 'value')])
 def display_value(user_input):
-    results = df.groupby('Sex')[user_input].mean()
+    results = df.groupby('name')[user_input].mean()
     mydata = [go.Bar(x = results.index,
                      y = results.values,
-                     marker = dict(color='blue'))]
+                     marker = dict(color='purple'))]
     mylayout = go.Layout(title = 'This is a cool bar chart',
                          xaxis = dict(title='this is my x-axis'),
                          yaxis = dict(title='this is my y-axis'))
