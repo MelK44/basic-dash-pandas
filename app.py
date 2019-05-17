@@ -40,9 +40,9 @@ app.layout = html.Div([
 ######### Interactive callbacks go here #########
 @app.callback(dash.dependencies.Output('display-value', 'figure'),
               [dash.dependencies.Input('dropdown', 'value')])
-def display_value(colors_list[0]):
-    results = df.groupby(colors_list[0])[['calories','fiber','fat','sugars','vitamins','cups']].mean()
-    mydata = [go.Bar(x = results.index,
+def display_value(user_input):
+    results = df.groupby('name')[['calories','fiber','fat','sugars','vitamins','cups']].mean()
+    mydata = [go.Bar(x = ['calories','fiber','fat','sugars','vitamins','cups'],
                      y = results.values,
                      marker = dict(color='purple'))]
     mylayout = go.Layout(title = 'How does your cereal stack up?',
