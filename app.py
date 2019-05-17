@@ -41,7 +41,7 @@ app.layout = html.Div([
 @app.callback(dash.dependencies.Output('display-value', 'figure'),
               [dash.dependencies.Input('dropdown', 'value')])
 def display_value(user_input):
-    results = df.groupby(user_input)[['calories','fiber','fat','sugars','vitamins','cups']].mean()
+    results = df.groupby('name')[['calories','fiber','fat','sugars','vitamins','cups']].mean()
     mydata = [go.Bar(x = results.index,
                      y = results.values,
                      marker = dict(color='purple'))]
