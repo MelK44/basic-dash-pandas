@@ -17,14 +17,14 @@ app.css.append_css({"external_url": "https://codepen.io/chriddyp/pen/bWLwgP.css"
 ###### Import a dataframe #######
 df = pd.read_csv("https://raw.githubusercontent.com/MelK44/basic-dash-pandas/master/all_cereals.csv")
 
-colors_list=['calories', 'protein', 'fat', 'fiber','sugars','sodium','vitamins','cups']
+colors_list=[list(df['name'])]
 
 
 
 
 ####### Layout of the app ########
 app.layout = html.Div([
-    html.H3('Choose a Nutrient:'),
+    html.H3('Choose a Cereal:'),
     dcc.Dropdown(
         id='dropdown',
         options=[{'label': i, 'value': i} for i in colors_list],
@@ -39,11 +39,11 @@ app.layout = html.Div([
 @app.callback(dash.dependencies.Output('display-value', 'figure'),
               [dash.dependencies.Input('dropdown', 'value')])
 def display_value(user_input):
-    results = df.groupby('name')[user_input].mean()
+    results = df.groupby(user_input)[['calories','fiber','fat','sugars','vitamins','cups']].mean()
     mydata = [go.Bar(x = results.index,
                      y = results.values,
                      marker = dict(color='purple'))]
-    mylayout = go.Layout(title = 'This is a cool bar chart',
+    mylayout = go.Layout(title = 'How does your cereal stack up?',
                          xaxis = dict(title='this is my x-axis'),
                          yaxis = dict(title='this is my y-axis'))
     myfig = go.Figure(data=mydata, layout=mylayout)
