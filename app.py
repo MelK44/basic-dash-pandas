@@ -17,7 +17,7 @@ app.css.append_css({"external_url": "https://codepen.io/chriddyp/pen/bWLwgP.css"
 ###### Import a dataframe #######
 df = pd.read_csv("https://raw.githubusercontent.com/MelK44/basic-dash-pandas/master/all_cereals.csv")
 
-colors_list=[list(df['name'])]
+colors_list=[list(df['name']),'\n']
 
 
 
