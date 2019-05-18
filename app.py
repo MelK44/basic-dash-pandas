@@ -48,7 +48,7 @@ def display_value(user_input):
     mydata = [go.Bar(x = ['fiber','fat','sugars'],
                      y =results.values,
                      marker = dict(color='purple'))]
-                         xaxis = dict(title='Grams'),
+                         xaxis = dict(title='grams'),
                          yaxis = dict(title='Nutrient Contents per Serving'))
     myfig = go.Figure(data=mydata, layout=mylayout)
     return myfig
