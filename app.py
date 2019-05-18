@@ -42,7 +42,7 @@ app.layout = html.Div([
               [dash.dependencies.Input('dropdown', 'value')])
 def display_value(user_input):
     results = df.groupby('name')[['fiber','fat','sugars']].mean()
-    mydata = [go.Bar(x = ['calories','fiber','fat','sugars','vitamins','cups'],
+    mydata = [go.Bar(x = ['fiber','fat','sugars'],
                      y = results.values,
                      marker = dict(color='purple'))]
     mylayout = go.Layout(title = 'How does your cereal stack up?',
