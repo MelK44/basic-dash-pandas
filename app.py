@@ -41,19 +41,16 @@ app.layout = html.Div([
 @app.callback(dash.dependencies.Output('display-value', 'figure'),
               [dash.dependencies.Input('dropdown', 'value')])
 def display_value(user_input):
-#     df['fat'] = pd.to_numeric(df['fat'])
-#     df['fiber'] = pd.to_numeric(df['fiber'])
-#     df['sugars'] = pd.to_numeric(df['sugars'])
-results = df.groupby('name')[['fiber','fat','sugars']].mean()
-results1 = results.loc[(user_input]
-mydata = [go.Bar(x = ['fiber','fat','sugars'],
+   results = df.groupby('name')[['fiber','fat','sugars']].mean()
+   results1 = results.loc[(user_input)]
+   mydata = [go.Bar(x = ['fiber','fat','sugars'],
                  y = results1.values,
                  marker = dict(color='purple'))]
 
 
-mylayout = go.Layout(xaxis = dict(title='grams'), yaxis = dict(title='Nutrient Contents per Serving'))
+   mylayout = go.Layout(xaxis = dict(title='grams'), yaxis = dict(title='Nutrient Contents per Serving'))
 
-myfig = go.Figure(data=mydata)
+   myfig = go.Figure(data=mydata)
     return myfig
 
 
