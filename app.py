@@ -45,7 +45,7 @@ def display_value(user_input):
     mydata = [go.Bar(x = ['fiber','fat','sugars'],
                      y = results.values,
                      marker = dict(color='purple'))]
-    mylayout = go.Layout(title = 'How does your cereal stack up?',
+    mylayout = go.Layout(title = (f'How does{user_input} stack up?'),
                          xaxis = dict(title='this is my x-axis'),
                          yaxis = dict(title='this is my y-axis'))
     myfig = go.Figure(data=mydata, layout=mylayout)
