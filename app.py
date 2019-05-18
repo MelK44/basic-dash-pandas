@@ -47,8 +47,8 @@ def display_value(user_input):
     results = df.groupby('name')[['fiber','fat','sugars']].mean()
     mydata = [go.Bar(x = ['fiber','fat','sugars'],
                      y = results.values,
-                     marker = dict(color='purple'))],
-                     xaxis = dict(title='grams'),
+                     marker = dict(color='purple'))]
+                     xaxis = dict(title='grams')
                      yaxis = dict(title='Nutrient Contents per Serving'))]
     myfig = go.Figure(data=mydata, layout=mylayout)
     return myfig
