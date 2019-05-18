@@ -44,9 +44,8 @@ def display_value(user_input):
     df["fat"] = pd.to_numeric(df["fat"])
     df["fiber"] = pd.to_numeric(df["fiber"])
     df["sugars"] = pd.to_numeric(df["sugars"])
-#     results = df.groupby('name')[['fiber','fat','sugars']].mean()
-    results = df[['fiber','fat','sugars']].mean()
-    mydata = [go.Bar(x = ['fiber','fat','sugars'],
+    results = df.groupby('name')[['fiber','fat','sugars']].mean()
+    mydata = [go.Bar(x = df[['fiber','fat','sugars']],
                      y = results.values,
                      marker = dict(color='purple'))]
                          xaxis = dict(title='Grams'),
