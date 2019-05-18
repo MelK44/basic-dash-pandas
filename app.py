@@ -46,10 +46,10 @@ def display_value(user_input):
     df["sugars"] = pd.to_numeric(df["sugars"])
     results = df.groupby('name')[['fiber','fat','sugars']].mean()
     mydata = [go.Bar(x = ['fiber','fat','sugars'],
-                     y = results['fiber'].values,
-                     marker = dict(color='purple'))]
-                         xaxis = dict(title='grams'),
-                         yaxis = dict(title='Nutrient Contents per Serving'))
+                     y = results.values,
+                     marker = dict(color='purple'))],
+                     xaxis = dict(title='grams'),
+                     yaxis = dict(title='Nutrient Contents per Serving'))]
     myfig = go.Figure(data=mydata, layout=mylayout)
     return myfig
 
