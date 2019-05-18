@@ -43,7 +43,7 @@ app.layout = html.Div([
 def display_value(user_input):
     results = df.groupby('name')[['fiber','fat','sugars']].mean()
     mydata = [go.Bar(x = ['fiber','fat','sugars'],
-                     y = results.values,
+                     y = results.values.to_numeric,
                      marker = dict(color='purple'))]
     mylayout = go.Layout(title = (f'How does {user_input} stack up?'),
                          xaxis = dict(title='this is my x-axis'),
