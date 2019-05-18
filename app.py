@@ -44,13 +44,12 @@ def display_value(user_input):
     df["fat"] = pd.to_numeric(df["fat"])
     df["fiber"] = pd.to_numeric(df["fiber"])
     df["sugars"] = pd.to_numeric(df["sugars"])
-    results = df.groupby('name')[['fiber','fat','sugars']].mean()
+#     results = df.groupby('name')[['fiber','fat','sugars']].mean()
     mydata = [go.Bar(x = ['fiber','fat','sugars'],
-                     y = results.values,
+                     y = df.values,
                      marker = dict(color='purple'))]
-    mylayout = go.Layout(title = (f'How does {user_input} stack up?'),
-                         xaxis = dict(title='this is my x-axis'),
-                         yaxis = dict(title='this is my y-axis'))
+                         xaxis = dict(title='Grams'),
+                         yaxis = dict(title='Nutrient Contents per Serving'))
     myfig = go.Figure(data=mydata, layout=mylayout)
     return myfig
 
